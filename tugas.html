@@ -13,48 +13,48 @@
     <center>
         <div>
             <div class="css-container css-teal css-half">
-                    <h2>Input Form</h2>
-                  </div>
-                  
-                  <form class="css-container css-half" style="text-align: left">
-                    <label class="css-text-teal"><b>Nama</b></label>
-                    <input class="css-input css-border css-light-grey" type="text">
-                  
-                    <label class="css-text-teal"><b>Umur</b></label>
-                    <input class="css-input css-border css-light-grey" type="number">
-    
-                    <label class="css-text-teal"><b>Pekerjaan</b></label>
-                    <input class="css-input css-border css-light-grey" type="text">
-    
-                    <input class="css-radio css-border css-light-grey" name="gender" type="radio" value="Male" id="gender">
-                    <label class="css-text-teal"><b>Male</b></label>
+                <h2>Input Form</h2>
+            </div>
 
-                    <input class="css-radio css-border css-light-grey" type="radio" name="gender" value="Female" id="gender">
-                    <label class="css-text-teal"><b>Female</b></label>
+            <form class="css-container css-half" style="text-align: left">
+                <label class="css-text-teal"><b>Nama</b></label>
+                <input class="css-input css-border css-light-grey" type="text">
 
-                    <br>
-                  
-                    <input type="button" onclick="tambahData()" class="css-btn css-blue-grey" value="Add ❯" style="margin-top:15px">
-                  </form>
-                  <div class="css-container css-teal" style="margin-top: 40px; width: 50%">
-                    <h2>Content</h2>
-                      </div>
-                </div>
-                  <table>
-                        <tr>
-                            <td><input type="text" placeholder="Filter By Nama" onkeyup="filter()" style="padding:5px"></td>
-                            <td><input type="number" placeholder="Filter By Umur" onkeyup="filter()" style="padding:5px"></td>
-                            <td><input type="text" placeholder="Filter By Pekerjaan" onkeyup="filter()" style="padding:5px"></td>
-                            <!-- <td><input type="button" value="Filter" onclick="filter()" class="css-btn css-teal"></td> -->
-                        </tr>
-                    </table>
+                <label class="css-text-teal"><b>Umur</b></label>
+                <input class="css-input css-border css-light-grey" type="number">
+
+                <label class="css-text-teal"><b>Pekerjaan</b></label>
+                <input class="css-input css-border css-light-grey" type="text">
+
+                <input class="css-radio css-border css-light-grey" name="gender" type="radio" value="Male" id="gender">
+                <label class="css-text-teal"><b>Male</b></label>
+
+                <input class="css-radio css-border css-light-grey" type="radio" name="gender" value="Female" id="gender">
+                <label class="css-text-teal"><b>Female</b></label>
+
+                <br>
+
+                <input type="button" onclick="tambahData()" class="css-btn css-blue-grey" value="Add ❯" style="margin-top:15px">
+            </form>
+            <div class="css-container css-teal" style="margin-top: 40px; width: 50%">
+                <h2>Content</h2>
+            </div>
+        </div>
+        <table>
+            <tr>
+                <td><input type="text" placeholder="Filter By Nama" onkeyup="filter()" style="padding:5px"></td>
+                <td><input type="number" placeholder="Filter By Umur" onkeyup="filter()" style="padding:5px"></td>
+                <td><input type="text" placeholder="Filter By Pekerjaan" onkeyup="filter()" style="padding:5px"></td>
+                <!-- <td><input type="button" value="Filter" onclick="filter()" class="css-btn css-teal"></td> -->
+            </tr>
+        </table>
         <table class="css-striped css-text-teal" style="width:50%">
             <thead class="css-teal">
                 <tr>
-                    <td>Nama</td>
-                    <td>Usia</td>
-                    <td>Pekerjaan</td>
-                    <td>Gender</td>
+                    <td onclick="sortTableName()">Nama</td>
+                    <td onclick="sortTableAge()">Usia</td>
+                    <td onclick="sortTableJob()">Pekerjaan</td>
+                    <td onclick="sortTableGender()">Gender</td>
                     <!-- <td> </td> -->
                 </tr>
             </thead>
@@ -62,13 +62,13 @@
 
             </tbody>
         </table>
-        
+
     </center>
 
     <script>
         var data = []
-        class Orang{
-            constructor(nama, usia, pekerjaan, gender){
+        class Orang {
+            constructor(nama, usia, pekerjaan, gender) {
                 this.nama = nama;
                 this.umur = usia;
                 this.pekerjaan = pekerjaan;
@@ -85,7 +85,7 @@
             if (nama == '' || usia == '' || pekerjaan == '' || gender == '') {
                 alert("Harus diisi yang bener bro")
             } else {
-                var newMan = new Orang(nama,usia,pekerjaan,gender)
+                var newMan = new Orang(nama, usia, pekerjaan, gender)
                 data.push(newMan)
                 tampilData(data)
 
@@ -103,37 +103,137 @@
                 }
             }
         }
-        function tampilData(arr){
+
+        function tampilData(arr) {
             var tampil = ''
-            for(var i = 0; i < arr.length; i++){
-                    tampil += `<tr>
+            for (var i = 0; i < arr.length; i++) {
+                tampil +=
+                    `<tr>
                                 <td>${arr[i].nama}</td>
                                 <td>${arr[i].umur}</td>
                                 <td>${arr[i].pekerjaan}</td>
                                 <td>${arr[i].gender}</td>
                             </tr>`
-                }
-                document.getElementById('isiTable').innerHTML = tampil
+            }
+            document.getElementById('isiTable').innerHTML = tampil
         }
-        function filter(){
-            var inputUserNama = document.getElementsByTagName('input')[5].value
-            var inputUserUmur = document.getElementsByTagName('input')[6].value
-            var inputUserPekerjaan = document.getElementsByTagName('input')[7].value
+
+        function filter() {
+            var inputUserNama = document.getElementsByTagName('input')[6].value
+            var inputUserUmur = document.getElementsByTagName('input')[7].value
+            var inputUserPekerjaan = document.getElementsByTagName('input')[8].value
             // alert(inputUser)
             var newData = []
-            for(var i = 0; i < data.length; i++){
-                if(data[i].nama.startsWith(inputUserNama) && data[i].umur.startsWith(inputUserUmur) && data[i].pekerjaan.startsWith(inputUserPekerjaan)){
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].nama.startsWith(inputUserNama) && data[i].umur.startsWith(inputUserUmur) && data[i].pekerjaan
+                    .startsWith(inputUserPekerjaan)) {
                     newData.push(data[i])
                 }
             }
             tampilData(newData)
         }
 
-        function fnGender(){
-            if(gender[0].checked){
+        function fnGender() {
+            if (gender[0].checked) {
                 return "Male"
-            }else if(gender[1].checked){
+            } else if (gender[1].checked) {
                 return "Female"
+            }
+        }
+
+        function sortTableName() {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementsByTagName('table')[1]
+            switching = true;
+            while (switching) {
+                switching = false
+                rows = table.rows
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false
+                    x = rows[i].getElementsByTagName("TD")[0]
+                    y = rows[i + 1].getElementsByTagName("TD")[0]
+                
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true
+                        break
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i])
+                    switching = true
+                }
+            }
+        }
+
+        function sortTableAge() {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementsByTagName('table')[1]
+            switching = true
+            while (switching) {
+                switching = false
+                rows = table.rows
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false
+                    x = rows[i].getElementsByTagName("TD")[1]
+                    y = rows[i + 1].getElementsByTagName("TD")[1]
+                
+                    if (Number(x.innerHTML) > Number(y.innerHTML)) {
+                        shouldSwitch = true
+                        break
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i])
+                    switching = true
+                }
+            }
+        }
+
+        function sortTableJob() {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementsByTagName('table')[1]
+            switching = true
+            while (switching) {
+                switching = false
+                rows = table.rows
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false
+                    x = rows[i].getElementsByTagName("TD")[2]
+                    y = rows[i + 1].getElementsByTagName("TD")[2]
+                
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true
+                        break
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i])
+                    switching = true
+                }
+            }
+        }
+
+        function sortTableGender() {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementsByTagName('table')[1]
+            switching = true;
+            while (switching) {
+                switching = false
+                rows = table.rows
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false
+                    x = rows[i].getElementsByTagName("TD")[3]
+                    y = rows[i + 1].getElementsByTagName("TD")[3]
+                
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true
+                        break
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i])
+                    switching = true
+                }
             }
         }
     </script>
