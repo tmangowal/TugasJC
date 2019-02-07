@@ -1,0 +1,106 @@
+table, th, td{
+    text-align: center;
+    border: solid black 1px;
+    border-collapse: collapse;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 50px;
+}
+
+h1 {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    margin: 10px 0
+}
+
+html {
+    box-sizing: border-box
+}
+
+body{
+    margin: 0;
+}
+
+html,
+body {
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+    line-height: 1.5
+}
+
+button,
+input{
+    font: inherit;
+    margin: 0;
+    overflow: visible
+}
+
+.css-half{
+    width: 50%;
+}
+
+.css-striped tbody tr:nth-child(even) {
+    background-color: #f1f1f1
+}
+
+.css-btn,
+.css-button {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap
+}
+
+.css-btn:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+.css-text-light-gray{
+    color: #f1f1f1 !important
+}
+
+.css-container{
+    padding: 0.01em 16px
+}
+
+.css-teal{
+    color: #fff !important;
+    background-color: #009688 !important
+}
+
+.css-text-teal{
+    color: #009688 !important
+}
+
+.css-input {
+    padding: 8px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 100%
+}
+
+.css-border {
+    border: 1px solid #ccc !important
+}
+
+.css-blue-grey{
+    color: #fff !important;
+    background-color: #607d8b !important
+}
+
+.css-radio {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    top: 6px
+}

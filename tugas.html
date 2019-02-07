@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,135 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
+    <center>
+        <div>
+            <div class="css-container css-teal css-half">
+                    <h2>Input Form</h2>
+                  </div>
+                  
+                  <form class="css-container css-half" style="text-align: left">
+                    <label class="css-text-teal"><b>Nama</b></label>
+                    <input class="css-input css-border css-light-grey" type="text">
+                  
+                    <label class="css-text-teal"><b>Umur</b></label>
+                    <input class="css-input css-border css-light-grey" type="number">
     
+                    <label class="css-text-teal"><b>Pekerjaan</b></label>
+                    <input class="css-input css-border css-light-grey" type="text">
+    
+                    <input class="css-radio css-border css-light-grey" name="gender" type="radio" value="Male" id="gender">
+                    <label class="css-text-teal"><b>Male</b></label>
+
+                    <input class="css-radio css-border css-light-grey" type="radio" name="gender" value="Female" id="gender">
+                    <label class="css-text-teal"><b>Female</b></label>
+
+                    <br>
+                  
+                    <input type="button" onclick="tambahData()" class="css-btn css-blue-grey" value="Add ❯" style="margin-top:15px">
+                  </form>
+                  <div class="css-container css-teal" style="margin-top: 40px; width: 50%">
+                    <h2>Content</h2>
+                      </div>
+                </div>
+                  <table>
+                        <tr>
+                            <td><input type="text" placeholder="Filter By Nama" onkeyup="filter()" style="padding:5px"></td>
+                            <td><input type="number" placeholder="Filter By Umur" onkeyup="filter()" style="padding:5px"></td>
+                            <td><input type="text" placeholder="Filter By Pekerjaan" onkeyup="filter()" style="padding:5px"></td>
+                            <!-- <td><input type="button" value="Filter" onclick="filter()" class="css-btn css-teal"></td> -->
+                        </tr>
+                    </table>
+        <table class="css-striped css-text-teal" style="width:50%">
+            <thead class="css-teal">
+                <tr>
+                    <td>Nama</td>
+                    <td>Usia</td>
+                    <td>Pekerjaan</td>
+                    <td>Gender</td>
+                    <!-- <td> </td> -->
+                </tr>
+            </thead>
+            <tbody id="isiTable">
+
+            </tbody>
+        </table>
+        
+    </center>
+
+    <script>
+        var data = []
+        class Orang{
+            constructor(nama, usia, pekerjaan, gender){
+                this.nama = nama;
+                this.umur = usia;
+                this.pekerjaan = pekerjaan;
+                this.gender = gender
+            }
+        }
+
+        function tambahData() {
+            var selector = document.getElementsByTagName('input')
+            var nama = selector[0].value
+            var usia = selector[1].value
+            var pekerjaan = selector[2].value
+            var gender = fnGender()
+            if (nama == '' || usia == '' || pekerjaan == '' || gender == '') {
+                alert("Harus diisi yang bener bro")
+            } else {
+                var newMan = new Orang(nama,usia,pekerjaan,gender)
+                data.push(newMan)
+                tampilData(data)
+
+
+                // document.getElementById('isiTable').innerHTML +=
+                //     `<tr>
+                //                                     <td>${nama}</td>
+                //                                     <td>${usia}</td>
+                //                                     <td>${pekerjaan}</td>
+                //                                     <td><img src="${link}" width="50px"></td>
+                //                                     <td><button></button></td>
+                //                                 </tr>`
+                for (var i = 0; i < 4; i++) {
+                    selector[i].value = ''
+                }
+            }
+        }
+        function tampilData(arr){
+            var tampil = ''
+            for(var i = 0; i < arr.length; i++){
+                    tampil += `<tr>
+                                <td>${arr[i].nama}</td>
+                                <td>${arr[i].umur}</td>
+                                <td>${arr[i].pekerjaan}</td>
+                                <td>${arr[i].gender}</td>
+                            </tr>`
+                }
+                document.getElementById('isiTable').innerHTML = tampil
+        }
+        function filter(){
+            var inputUserNama = document.getElementsByTagName('input')[5].value
+            var inputUserUmur = document.getElementsByTagName('input')[6].value
+            var inputUserPekerjaan = document.getElementsByTagName('input')[7].value
+            // alert(inputUser)
+            var newData = []
+            for(var i = 0; i < data.length; i++){
+                if(data[i].nama.startsWith(inputUserNama) && data[i].umur.startsWith(inputUserUmur) && data[i].pekerjaan.startsWith(inputUserPekerjaan)){
+                    newData.push(data[i])
+                }
+            }
+            tampilData(newData)
+        }
+
+        function fnGender(){
+            if(gender[0].checked){
+                return "Male"
+            }else if(gender[1].checked){
+                return "Female"
+            }
+        }
+    </script>
 </body>
+
 </html>
